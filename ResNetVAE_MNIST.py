@@ -14,8 +14,8 @@ from modules import *
 from sklearn.model_selection import train_test_split
 import pickle
 
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+# os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # EncoderCNN architecture
 CNN_fc_hidden1, CNN_fc_hidden2 = 1024, 1024
