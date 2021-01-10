@@ -46,6 +46,8 @@ where <img src="./fig/DKL.png" width="30"> is the Kullback-Leibler divergence, a
 - The input images are resized to **(channels, x-dim, y-dim) = (3, 224, 224)**, which is reqiured by the ResNet-152 model. 
 - We use ADAM in our optimization process.
    
+<img src="./fig/training_curve.png" width="650">
+
 
 ## Usage 
 
