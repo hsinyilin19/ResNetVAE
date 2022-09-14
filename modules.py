@@ -52,7 +52,7 @@ def convtrans2D_output_size(img_size, padding, kernel_size, stride):
 ## ---------------------- ResNet VAE ---------------------- ##
 
 class ResNet_VAE(nn.Module):
-    def __init__(self, fc_hidden1=1024, fc_hidden2=768, drop_p=0.3, CNN_embed_dim=256):
+    def __init__(self, fc_hidden1=1024, fc_hidden2=768, drop_p=0.3, CNN_embed_dim=256, freeze_resnet=True):
         super(ResNet_VAE, self).__init__()
 
         self.fc_hidden1, self.fc_hidden2, self.CNN_embed_dim = fc_hidden1, fc_hidden2, CNN_embed_dim
@@ -65,6 +65,9 @@ class ResNet_VAE(nn.Module):
 
         # encoding components
         resnet = models.resnet152(pretrained=True)
+        if freeze_resnet:
+            for param in resnet.parameters():
+                param.requires_grad = False
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
         self.fc1 = nn.Linear(resnet.fc.in_features, self.fc_hidden1)
